@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <!-- Spring -->
+    <listener>
+        <description>activates Spring IoC container during start</description>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <context-param>
+        <description>config file for Spring</description>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/spring-context.xml</param-value>
+    </context-param>
+
+    <!-- JSTL -->
+    <context-param>
+        <description>JSTL tags will use localized string from the same source as Stripes</description>
+        <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+        <param-value>StripesResources</param-value>
+    </context-param>
+
+    <!-- Stripes -->
+    <filter>
+        <description>Stripes main conf</description>
+        <display-name>Stripes Filter</display-name>
+        <filter-name>StripesFilter</filter-name>
+        <filter-class>net.sourceforge.stripes.controller.StripesFilter</filter-class>
+        <init-param>
+            <description>where Stripes searches for ActionBeans</description>
+            <param-name>ActionResolver.Packages</param-name>
+            <param-value>cz.fi.muni.pa165.calorycounter.frontend</param-value>
+        </init-param>
+        <init-param>
+            <description>locales and encodings in the app</description>
+            <param-name>LocalePicker.Locales</param-name>
+            <param-value>cs:utf-8,en:utf-8</param-value>
+        </init-param>
+        <init-param>
+            <description>Stripes injects Spring beans + security interceptor</description>
+            <param-name>Interceptor.Classes</param-name>
+            <param-value>net.sourceforge.stripes.integration.spring.SpringInterceptor, cz.fi.muni.pa165.calorycounter.frontend.SecurityInterceptor</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>StripesFilter</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <filter>
+        <display-name>Stripes Dynamic Mapping Filter</display-name>
+        <filter-name>DynamicMappingFilter</filter-name>
+        <filter-class>net.sourceforge.stripes.controller.DynamicMappingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>DynamicMappingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>cross-origin</filter-name>
+        <filter-class>org.eclipse.jetty.servlets.CrossOriginFilter</filter-class>
+        <init-param>
+            <param-name>allowedOrigins</param-name>
+            <param-value>*</param-value>
+        </init-param>
+        <init-param>
+            <param-name>allowedMethods</param-name>
+            <param-value>*</param-value>
+        </init-param>
+        <init-param>
+            <param-name>allowedHeaders</param-name>
+            <param-value>*</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>cross-origin</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+    <!--Deployment of a JAX-RS application using web.xml with Servlet 3.0-->
+    <servlet>
+        <display-name>CaloryCounter JAX-RS Servlet</display-name>
+        <servlet-name>RS</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <!--        Following is required only if javax.ws.rs.Application subclass is packaged with the web.xml file.
+        See http://docs.oracle.com/cd/E24329_01/web.1211/e24983/configure.htm#CACIEAFE-->
+        <init-param>
+            <param-name>javax.ws.rs.Application</param-name>
+            <param-value>cz.fi.muni.pa165.calorycounter.frontend.restserver.ConfigApplication</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <!--If conflict with javax.ws.rs.ApplicationPath annotation, this takes precedence -->
+    <servlet-mapping>
+        <servlet-name>RS</servlet-name>
+        <url-pattern>/resources/*</url-pattern>
+    </servlet-mapping>
+</web-app>

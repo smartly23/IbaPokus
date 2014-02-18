@@ -1,0 +1,94 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>cz.fi.muni.pa165</groupId>
+        <artifactId>CaloryCounter</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <groupId>cz.fi.muni.pa165</groupId>
+    <artifactId>CaloryCounter-REST-Jersey-Client</artifactId>
+    <version>1.0</version>
+    <packaging>war</packaging>
+
+    <name>CaloryCounter-RestJerseyWebClient</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.test.skip>true</maven.test.skip>
+        <org.springframework.version>3.2.4.RELEASE</org.springframework.version>
+        <tomcat.version>7.0.33</tomcat.version>
+        <slf4j.version>1.7.5</slf4j.version>
+        <jetty.version>9.0.6.v20130930</jetty.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>cz.fi.muni.pa165</groupId>
+            <artifactId>CaloryCounter-API</artifactId>
+            <version>1.0</version>
+            <type>jar</type>
+        </dependency>
+        <!-- Jersey client-->
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>2.4.1</version>
+            <!--<scope>provided</scope>-->
+        </dependency>
+        <!-- spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>3.1.4.RELEASE</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-moxy</artifactId>
+            <version>2.4.1</version>
+        </dependency>
+        <!-- servlet, JSP, JSTL -->
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>6.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>taglibs</groupId>
+            <artifactId>standard</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>net.sourceforge.stripes</groupId>
+            <artifactId>stripes</artifactId>
+            <version>1.5.7</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>servlets.com</groupId>
+            <artifactId>cos</artifactId>
+            <version>05Nov2002</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <!-- Defaultne je nazov .war-ka v tvare artifactId-version (napr. CaloryCounter-Web-1.0.war),
+        tu mu mozme nastavit vlastny nazov, napr. to iste ale bez version number -->
+        <finalName>CaloryCounter-RestJerseyWebClient</finalName>
+    </build>
+</project>

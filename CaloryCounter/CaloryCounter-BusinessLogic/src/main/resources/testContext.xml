@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!-- Tento config sluzi na testy service vrstvy, kde pouzivame Mockito, a teda nechceme spojenie na DB. -->
+
+    <!-- service -->
+    <bean id="activityRecordService" class="cz.fi.muni.pa165.calorycounter.backend.service.impl.ActivityRecordServiceImpl">
+        <property name="activityRecordDao">
+            <ref local="activityRecordDaoJPA"/>
+        </property>
+        <property name="convert">
+            <ref local="activityRecordConvert"/>
+        </property>
+    </bean>
+
+    <bean id="activityRecordConvert" class="cz.fi.muni.pa165.calorycounter.backend.dto.convert.ActivityRecordConvert">
+        <property name="activityRecordDao">
+            <ref local="activityRecordDaoJPA"/>
+        </property>
+        <property name="activityDao">
+            <ref local="activityDaoJPA"/>
+        </property>
+        <property name="caloriesDao">
+            <ref local="caloriesDaoJPA"/>
+        </property>
+        <property name="userDao">
+            <ref local="userDaoJPA"/>
+        </property>
+    </bean>
+
+    <!--DAO-->
+    <bean id="activityRecordDaoJPA" class="cz.fi.muni.pa165.calorycounter.backend.dao.impl.ActivityRecordDaoImplJPA"/>
+    <bean id="activityDaoJPA" class="cz.fi.muni.pa165.calorycounter.backend.dao.impl.ActivityDaoImplJPA"/>
+    <bean id="caloriesDaoJPA" class="cz.fi.muni.pa165.calorycounter.backend.dao.impl.CaloriesDaoImplJPA"/>
+    <bean id="userDaoJPA" class="cz.fi.muni.pa165.calorycounter.backend.dao.impl.UserDaoImplJPA"/>
+</beans>

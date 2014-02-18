@@ -1,0 +1,240 @@
+body {
+    background-color: #D7DFE2;
+    margin:0px;
+    padding:0px;
+    font: 10px  verdana, arial, helvetica;
+    color: #416271;
+}
+h1#topTitle{
+    margin: 35px 20px 20px 20px;
+    float: left;
+}
+h1#topTitle a{
+    font-size:30px;
+    color:#E6D35E;
+    text-decoration: none;
+}
+h1{
+    margin:10px 5px;
+    font-size:20px;
+    color:#E6D35E;
+}
+h2{
+    margin:20px 15px 15px 15px;
+    font-size:20px;
+    color:#f7951e;
+}
+h3{
+    padding:0 0 5px 0;
+    margin:0px;
+    font-size:12px;
+    color:#59cef9;
+}
+h4{
+    padding:0 0 10px 0;
+    margin:0px;
+    font-size:14px;
+    color:#7ea743;
+}
+p{
+    text-align:justify;
+    margin:0px 20px;
+}
+p.white{
+    color:#FFFFFF;
+}
+p.green{
+    color:#d4f0ba;
+}
+p.clear{
+    clear:both;
+    padding:10px 0 0 0;
+}
+img.left_img{
+    border:1px #cae6c6 solid;
+    float:left;
+    margin:0 10px 0 0 ;
+}
+img.box_img{
+    float:left;
+    padding:0 20px 0 0 ;
+}
+#main_container{
+    width:900px;
+    height:auto;
+    margin:auto;
+    background-color:#FFFFFF;
+}
+#header{
+    width:900px;
+    height:auto;
+    margin:auto;
+}
+#logo{
+    padding:10px 10px;
+    float:left;
+}
+#logo img{
+    border: 0;
+    width: 95px;
+    height: 84px;
+}
+#profile{
+    padding:15px 15px;
+    float:right;
+}
+
+#profile a{
+    color: black;
+}
+#profile a:hover{
+    text-decoration: none;
+}
+
+/*----------------------menu-------------------------*/
+#menu{
+    width:900px;
+    height:42px;
+    padding:0px;
+    clear:both;
+    background-color:#416271;
+    list-style:none;
+    margin: 0 auto;
+    display:block;
+}
+#menu li{
+    list-style:none;display:block;float:left;width:auto;height:42px;padding: 0;margin: 0 0 0 25px;line-height:42px; font-family:Arial, Helvetica, sans-serif; font-size:13px;
+}
+#menu li#first{
+    margin-left: 340px;
+}
+#menu li a{
+    height:42px; width: auto;float:left;text-decoration:none;padding:0; margin:0px 3px 0px 3px;color:#fff;text-align:center;
+}
+#menu li :hover{
+    color: #C3C1BD;
+}
+#menu li .current{
+    color: #C3C1BD;
+}
+
+/*----------------middle green box-----------*/
+.green_box{
+    width:900px;
+    clear:both;
+    background:url(/images/green_box_bg.gif) no-repeat left #50a842;
+    background-position:50px 0px;
+}
+.text_content{
+    width:350px;
+    float:left;
+    padding:20px 0 0 0;
+}
+
+/*--------------------------main_content-------------------*/
+#main_content{
+    width:auto;
+    height:auto;
+    clear:both;
+    padding: 20px;
+    font-size: 13px;
+}
+
+/*--------------wide_content-----------*/
+#wide_content{
+    width:auto;
+    padding:10px 20px 10px 20px;
+}
+
+
+/*-----------------------------footer------------------*/
+#footer{
+    clear:both;
+    width: auto;
+    height:37px;
+    color: #fff;
+    background-color:#416271;
+}
+.copyright{
+    float:left;
+    margin-left: 20px;
+    line-height: 37px;
+    color: #C3C1BD
+}
+.footer_links{
+    float:right;
+    padding-right:15px;
+    padding-top:13px;
+}
+.footer_links a{
+    text-decoration:none;
+    color: #fff;
+    padding-left:10px;
+}
+.footer_links a:hover{
+    text-decoration:underline;
+    color: #fff;
+}
+
+
+/**** tables ****/
+
+table.basic {
+    border: 1px solid #3A3C3E;
+    border-collapse: collapse;
+    width: 100%;
+}
+table.basic td, table.basic th {
+    border: 1px solid #3A3C3E;
+    padding: 3px 6px;
+    text-align: center;
+}
+table.basic th {
+    background-color: #B8B8B8;
+}
+table.basic .col1 {
+    background-color: #F1F1F1;
+}
+
+
+#userForm label {
+    display: block;
+    float: left;
+    width: 400px;
+    text-align: right;
+    margin-right: 5px;
+}
+#userForm div {
+    height: 30px;
+    text-align: left;
+}
+
+#stateBar{
+    height: 45px;
+    border: 3px solid rgb(128,128,128);
+    background-color: rgb(208,208,208);
+    margin: 15px 0;
+    color: black;
+    line-height: 45px;
+    font-size: 17px;
+    padding: 0 15px;
+}
+#state{
+    font-weight: bold;
+}
+
+#searchForm input[type="submit"], #userForm input[type="submit"]{
+    padding: 4px 30px;
+    border: 2px solid rgb(128,128,128);
+    background-color: #E6D35E;
+    font-weight: bold;
+    cursor: hand;
+    cursor: pointer;
+}
+#searchForm input[type="submit"]:hover, #userForm input[type="submit"]:hover{
+    background-color: #D6C30E;
+}
+#userForm #buttons{
+    margin-top: 20px;
+    text-align: center;
+}
