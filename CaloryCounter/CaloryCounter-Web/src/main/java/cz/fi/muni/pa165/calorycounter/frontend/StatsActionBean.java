@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import cz.fi.muni.pa165.calorycounter.serviceapi.UserService;
 import cz.fi.muni.pa165.calorycounter.serviceapi.dto.UserStatsDto;
+import java.lang.annotation.RetentionPolicy;
 import java.util.List;
 
 /**
@@ -23,6 +24,7 @@ public class StatsActionBean extends BaseActionBean {
     protected UserService userService;
 
     //--- part for showing a list of records ----
+//    other change incompatible with upstream
     private List<UserStatsDto> usersStats;
 
     public AuthUserDto getUser() {
